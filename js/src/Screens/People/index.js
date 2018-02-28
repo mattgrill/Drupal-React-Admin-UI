@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-const App = () => <p>hello world</p>;
+import { PageTitle } from '../../Blocks';
+
+const App = () => <PageTitle title="People" />;
 
 render(<App />, document.getElementById('root'));

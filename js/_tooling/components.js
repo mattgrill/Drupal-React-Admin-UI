@@ -1,8 +1,8 @@
 const dirTree = require('directory-tree');
-const { children } = dirTree('./src/Components');
+const { children } = dirTree('./src/Screens');
 
 module.exports = () =>
   children.map(component => ({
-    entry: `./${component.path}/index.js`,
-    filename: `${component.name.toLowerCase()}.js`,
+    componentPath: `./${component.path}/index.js`,
+    componentName: `${component.name.toLowerCase()}`,
   }));

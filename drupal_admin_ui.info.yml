@@ -1,0 +1,4 @@
+name: Drupal Admin UI (React)
+description: Experimental React-based Drupal Admin UI.
+core: 8.x
+type: module

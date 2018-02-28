@@ -1,0 +1,39 @@
+{
+  "name": "drupal-admin-ui-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build:js-helpers": "./node_modules/.bin/babel-external-helpers > dist/helpers.js",
+    "build:js": "NODE_ENV=production ./node_modules/.bin/webpack --progress --display-modules --config webpack.config.js",
+    "watch:js": "./node_modules/.bin/webpack --progress --watch --config webpack.dev.config.js",
+    "prettier": "./node_modules/.bin/prettier --write 'src/**/*.js' '_tooling/*.js' 'webpack.*.js'"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.39",
+    "@babel/core": "^7.0.0-beta.39",
+    "@babel/preset-env": "^7.0.0-beta.39",
+    "@babel/preset-react": "^7.0.0-beta.40",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "8.0.0-beta.0",
+    "babel-minify-webpack-plugin": "^0.2.0",
+    "babel-plugin-external-helpers": "7.0.0-beta.3",
+    "babel-plugin-transform-class-properties": "7.0.0-beta.3",
+    "babel-plugin-transform-object-rest-spread": "7.0.0-beta.3",
+    "directory-tree": "^2.0.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.4.0",
+    "prettier": "^1.10.2",
+    "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}

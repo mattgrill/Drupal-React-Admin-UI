@@ -1,0 +1,19 @@
+react:
+  js:
+    https://unpkg.com/react@16/umd/react.production.min.js:
+      external: true
+    https://unpkg.com/react-dom@16/umd/react-dom.production.min.js:
+      external: true
+helpers:
+  js:
+    js/dist/helpers.js:
+      preprocess: false
+
+permissions:
+  js:
+    js/dist/permissions.js:
+      preprocess: false
+  dependencies:
+  - core/drupalSettings
+  - drupal_admin_ui/react
+  - drupal_admin_ui/helpers

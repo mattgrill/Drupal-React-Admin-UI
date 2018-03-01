@@ -15,7 +15,7 @@
       $build = [
         '#attached' => [
           'library' => [
-            'drupal_admin_ui/permissions',
+            'drupal_admin_ui/app',
           ],
           'drupalSettings' => [
             'drupal_admin_ui' => [

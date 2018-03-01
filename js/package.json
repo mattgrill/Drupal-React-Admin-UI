@@ -5,13 +5,14 @@
   "license": "MIT",
   "scripts": {
     "build:js-helpers": "./node_modules/.bin/babel-external-helpers > dist/helpers.js",
-    "build:js": "NODE_ENV=production ./node_modules/.bin/webpack --mode production --progress --display-modules --config webpack.config.js",
-    "watch:js": "./node_modules/.bin/webpack --mode development --progress --watch --config webpack.config.js",
+    "build:js": "NODE_ENV=production ./node_modules/.bin/webpack --progress --display-modules --config webpack.config.js",
+    "watch:js": "./node_modules/.bin/webpack --progress --watch --config webpack.config.js",
     "prettier": "./node_modules/.bin/prettier --write 'src/**/*.js' '_tooling/*.js' 'webpack.*.js'"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.39",
     "@babel/core": "^7.0.0-beta.39",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.39",
     "@babel/preset-react": "^7.0.0-beta.40",
     "babel-eslint": "^8.2.1",
@@ -28,13 +29,14 @@
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.4.0",
     "prettier": "^1.10.2",
-    "webpack": "^4.0.1",
-    "webpack-cli": "^2.0.9"
+    "webpack": "3.11.0"
   },
   "dependencies": {
     "drupal-react-components": "^0.0.6",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-loadable": "^5.3.1",
+    "react-router-dom": "^4.2.2"
   }
 }

@@ -1,6 +1,11 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { Card } from 'drupal-react-components';
+import { Link } from 'react-router-dom';
 
-import App from './Components';
+const Permissions = () => (
+  <Card title="Permissions">
+    <Link to="/admin/people">People</Link>
+  </Card>
+);
 
-render(<App />, document.getElementById('root'));
+export default Permissions;

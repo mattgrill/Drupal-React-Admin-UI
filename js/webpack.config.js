@@ -1,6 +1,4 @@
 const path = require('path');
-const components = require('./_tooling/components');
-
 const webpack = require('webpack');
 
 const envPlugins =
@@ -13,38 +11,33 @@ const envPlugins =
     : [new webpack.SourceMapDevToolPlugin()];
 
 const config = {
-  entry: {},
+  entry: { app: './src/app.js' },
   output: {
+    publicPath: '/modules/drupal-admin-ui/js/dist/',
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
+    chunkFilename: '[name].js',
   },
   externals: {
     react: 'React',
     'react-dom': 'ReactDOM',
   },
-  optimization: {
-    minimize: true,
-    splitChunks: {
-      chunks: 'all',
-      minSize: 100,
-      name: 'common.chunk',
-      cacheGroups: {
-        vendor: {
-          name: 'vendor.chunk',
-          test: /[\\/]node_modules[\\/]/,
-        },
-      },
-    },
-  },
-  plugins: [...envPlugins],
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      filename: 'common.js',
+    }),
+    ...envPlugins,
+  ],
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: ['/node_modules/'],
         query: {
           plugins: [
+            '@babel/plugin-syntax-dynamic-import',
             'external-helpers',
             'transform-class-properties',
             'transform-object-rest-spread',
@@ -72,9 +65,5 @@ const config = {
     ],
   },
 };
-
-components().forEach(({ componentPath, componentName }) => {
-  config.entry[componentName] = componentPath;
-});
 
 module.exports = config;

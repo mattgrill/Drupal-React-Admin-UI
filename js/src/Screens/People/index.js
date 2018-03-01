@@ -1,8 +1,11 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { Card } from 'drupal-react-components';
+import { Link } from 'react-router-dom';
 
-import { PageTitle } from '../../Blocks';
+const People = () => (
+  <Card title="People">
+    <Link to="/admin/people/permissions">Permissions</Link>
+  </Card>
+);
 
-const App = () => <PageTitle title="People" />;
-
-render(<App />, document.getElementById('root'));
+export default People;

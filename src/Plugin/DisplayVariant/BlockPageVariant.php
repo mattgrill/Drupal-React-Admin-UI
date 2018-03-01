@@ -6,6 +6,7 @@ use Drupal\block\Plugin\DisplayVariant\BlockPageVariant as CoreVariant;
 use Drupal\Core\Block\MainContentBlockPluginInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Render\RenderableInterface;
+use Drupal\Core\Render\Element\StatusMessages;
 
 /**
  * Provides a page display variant that returns all but the main block as settings.
@@ -40,9 +41,14 @@ class BlockPageVariant extends CoreVariant {
             // Build the block by it's preRender functions.
             foreach ($block['#pre_render'] as $callback) {
               $block = call_user_func($callback, $block);
-              $attached_blocks[$region][$block_id] = $this->attachedBlockContent($block);
             }
           }
+          $block_content = $this->attachedBlockContent($block);
+          // @todo Should this be done later in the render process?
+          if (!empty($block_content['#type']) && $block_content['#type'] === 'status_messages') {
+            $block_content = StatusMessages::renderMessages(NULL);
+          }
+          $attached_blocks[$region][$block_id] = $block_content;
           unset($build[$region][$block_id]);
         }
       }

@@ -49,7 +49,7 @@ class DefaultController extends ControllerBase {
     $build = [
       '#attached' => [
         'library' => [
-          'drupal_admin_ui/common',
+          'drupal_admin_ui/app',
         ],
       ],
       '#markup' => '<div id="root" />',

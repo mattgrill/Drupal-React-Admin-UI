@@ -20,7 +20,7 @@ class BlockPageDisplayVariantSubscriber implements EventSubscriberInterface {
    *   The event to process.
    */
   public function onSelectPageDisplayVariant(PageDisplayVariantSelectionEvent $event) {
-    if ($event->getRouteMatch()->getRouteObject()->getOption('_admin_route')) {
+    if ($event->getRouteMatch()->getRouteObject()->getOption('_drupal_admin_ui.route')) {
       $event->setPluginId('drupal_admin_ui_page');
     }
   }

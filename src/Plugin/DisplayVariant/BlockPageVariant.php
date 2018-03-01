@@ -9,7 +9,7 @@ use Drupal\Core\Render\RenderableInterface;
 use Drupal\Core\Render\Element\StatusMessages;
 
 /**
- * Provides a page display variant that returns all but the main block as settings.
+ * Provides a page display converts blocks to settings.
  *
  * @PageDisplayVariant(
  *   id = "drupal_admin_ui_page",
@@ -17,7 +17,6 @@ use Drupal\Core\Render\Element\StatusMessages;
  * )
  */
 class BlockPageVariant extends CoreVariant {
-
 
   /**
    * {@inheritdoc}
@@ -58,21 +57,20 @@ class BlockPageVariant extends CoreVariant {
     $this->removeUnneeded($attached_blocks);
     $build['#attached']['drupalSettings']['drupal_admin_ui']['regions'] = $attached_blocks;
 
-
     return $build;
   }
 
   /**
    * Return the content of block.
    *
-   * @param $built_block
+   * @param array $built_block
    *   The built block.
    *
    * @return array
    *   Content render array.
    */
-  protected function attachedBlockContent($built_block) {
-    if(!empty($built_block['content'])) {
+  protected function attachedBlockContent(array $built_block) {
+    if (!empty($built_block['content'])) {
       return $built_block['content'];
     }
     return [];
@@ -82,6 +80,7 @@ class BlockPageVariant extends CoreVariant {
    * Render all renderable elements.
    *
    * @param array $elements
+   *   The elements.
    */
   protected function renderRenderables(array &$elements) {
     foreach ($elements as &$element) {
@@ -97,9 +96,10 @@ class BlockPageVariant extends CoreVariant {
   /**
    * Convert elements to strings that can be converted.
    *
-   * @param $elements
+   * @param array $elements
+   *   The elements.
    */
-  private function convertToStrings(&$elements) {
+  private function convertToStrings(array &$elements) {
     foreach ($elements as &$element) {
       if (is_array($element)) {
         $this->convertToStrings($element);
@@ -113,15 +113,16 @@ class BlockPageVariant extends CoreVariant {
   /**
    * Remove all elements not need for the client.
    *
-   * @param $elements
+   * @param array $elements
+   *   The elements.
    */
-  protected function removeUnneeded(&$elements) {
+  protected function removeUnneeded(array &$elements) {
     foreach ($elements as &$element) {
       if (is_array($element)) {
         $this->removeUnneeded($element);
       }
     }
-    unset($elements['#cache'],$elements['#access']);
+    unset($elements['#cache'], $elements['#access']);
   }
 
 }

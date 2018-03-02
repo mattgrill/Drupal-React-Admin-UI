@@ -5,9 +5,9 @@ react:
     https://unpkg.com/react-dom@16/umd/react-dom.production.min.js:
       external: true
 
-common:
+vendor:
   js:
-    js/dist/common.js:
+    js/dist/vendor.js:
       preprocess: false
 
 helpers:
@@ -21,6 +21,6 @@ app:
       preprocess: false
   dependencies:
   - core/drupalSettings
-  - drupal_admin_ui/react
+  # - drupal_admin_ui/react
   - drupal_admin_ui/helpers
-  - drupal_admin_ui/common
+  - drupal_admin_ui/vendor

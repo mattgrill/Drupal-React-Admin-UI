@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const Minify = require('babel-minify-webpack-plugin');
 
 const envPlugins =
   process.env.NODE_ENV === 'production'
@@ -7,25 +8,24 @@ const envPlugins =
         new webpack.DefinePlugin({
           'process.env.NODE_ENV': JSON.stringify('production'),
         }),
+        new Minify(),
       ]
-    : [new webpack.SourceMapDevToolPlugin()];
-
+    : [];
+// 'core-js/fn/promise', 'core-js/fn/object/entries',
 const config = {
-  entry: { app: './src/app.js' },
+  entry: {
+    app: ['./src/app.js'],
+  },
   output: {
     publicPath: '/modules/drupal-admin-ui/js/dist/',
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
-    chunkFilename: '[name].js',
-  },
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
+    chunkFilename: '[name].[hash].chunk.js',
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'common',
-      filename: 'common.js',
+      name: 'vendor',
+      minChunks: m => /node_modules/.test(m.context),
     }),
     ...envPlugins,
   ],
@@ -36,10 +36,11 @@ const config = {
         loader: 'babel-loader',
         exclude: ['/node_modules/'],
         query: {
+          cacheDirectory: true,
           plugins: [
             '@babel/plugin-syntax-dynamic-import',
-            'external-helpers',
-            'transform-class-properties',
+            '@babel/plugin-external-helpers',
+            '@babel/plugin-proposal-class-properties',
             'transform-object-rest-spread',
           ],
           presets: [

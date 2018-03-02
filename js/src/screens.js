@@ -1,16 +1,14 @@
-import React from 'react';
 import Loadable from 'react-loadable';
 
-const Loading = () => <p>loading...</p>;
+import Loading from './Helpers/loading';
 
 const Permissions = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: "permissions" */ './Screens/Permissions'),
+  loader: () => import('./Screens/Permissions'),
   loading: Loading,
 });
 
 const People = Loadable({
-  loader: () => import(/* webpackChunkName: "people" */ './Screens/People'),
+  loader: () => import('./Screens/People'),
   loading: Loading,
 });
 

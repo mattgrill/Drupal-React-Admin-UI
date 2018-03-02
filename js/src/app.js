@@ -2,14 +2,11 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { Permissions, People } from './screens';
+import Routes from './routes';
 
 const App = () => (
   <Router>
-    <Switch>
-      <Route path="/admin/people/permissions" component={Permissions} />
-      <Route path="/admin/people" component={People} />
-    </Switch>
+    <Switch>{Routes}</Switch>
   </Router>
 );
 

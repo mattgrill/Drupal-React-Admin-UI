@@ -12,13 +12,14 @@
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.39",
     "@babel/core": "^7.0.0-beta.39",
+    "@babel/plugin-external-helpers": "^7.0.0-beta.40",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.40",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.39",
     "@babel/preset-react": "^7.0.0-beta.40",
     "babel-eslint": "^8.2.1",
     "babel-loader": "8.0.0-beta.2",
-    "babel-plugin-external-helpers": "7.0.0-beta.3",
-    "babel-plugin-transform-class-properties": "7.0.0-beta.3",
+    "babel-minify-webpack-plugin": "^0.3.0",
     "babel-plugin-transform-object-rest-spread": "7.0.0-beta.3",
     "directory-tree": "^2.0.0",
     "eslint": "^4.9.0",
@@ -32,6 +33,7 @@
     "webpack": "3.11.0"
   },
   "dependencies": {
+    "core-js": "^2.5.3",
     "drupal-react-components": "^0.0.6",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",

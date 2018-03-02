@@ -3,3 +3,7 @@ services:
     class: Drupal\drupal_admin_ui\Routing\RouteSubscriber
     tags:
       - { name: event_subscriber }
+  drupal_admin_ui.page_display_variant_subscriber:
+    class: Drupal\drupal_admin_ui\EventSubscriber\BlockPageDisplayVariantSubscriber
+    tags:
+      - { name: event_subscriber }

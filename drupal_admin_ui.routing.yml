@@ -1,0 +1,10 @@
+# Callback Routes
+# These routes will be connected to their '_admin_related_route'.
+# The requirements will be added dynamically.
+# @see \Drupal\drupal_admin_ui\Routing\RouteSubscriber::alterRoutes
+drupal_admin_ui.user.permissions:
+  path: '/admin-json/permissions'
+  defaults:
+    _controller: '\Drupal\drupal_admin_ui\Controller\PermissionsController::get'
+  options:
+    _admin_related_route: 'user.admin_permissions'
